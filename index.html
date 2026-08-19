@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KATSA — Soluciones Tecnológicas Ágiles · Guatemala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ── FONDO ANIMADO (circuito / línea de montaje) ── -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grid-spotlight" id="gridSpotlight" aria-hidden="true"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="logo-link">
+    <img class="logo-img" src="Logo.png"alt="Logo KATSA">
+    <div class="logo-text-block">
+      <span class="logo-name">Kingdom <span>Agile </span>Tech </span></span>
+      <span class="logo-sub">Soluciones Tecnológicas Ágiles</span>
+    </div>
+  </a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navList">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="navList">
+    <li><a href="#solucion" class="js-tab-link" data-panel="solucion">Solución</a></li>
+    <li><a href="#servicios" class="js-tab-link" data-panel="servicios">Servicios</a></li>
+    <li><a href="#sectores" class="js-tab-link" data-panel="sectores">Sectores</a></li>
+    <li><a href="#tecnologia" class="js-tab-link" data-panel="tecnologia">Tecnología</a></li>
+    <li><a href="#metodologia" class="js-tab-link" data-panel="metodologia">Metodología</a></li>
+    <li><a href="#contacto" class="nav-cta js-open-schedule">Diagnóstico Express</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <svg class="hero-ribbon" viewBox="0 0 900 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="ribbonGradHero" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#22c3ea"/>
+        <stop offset="55%" stop-color="#2f6fe0"/>
+        <stop offset="100%" stop-color="#14205c"/>
+      </linearGradient>
+    </defs>
+    <path d="M 60 820 C 230 820 230 590 420 540 C 610 490 630 260 800 80"
+          fill="none" stroke="url(#ribbonGradHero)" stroke-width="100" stroke-linecap="round"/>
+  </svg>
+  <div class="hero-inner">
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Guatemala · Región Centroamericana · B2G &amp; B2B</div>
+
+      <h1>
+        La <span class="metal-text silver">fábrica de software</span>
+        <span class="accent">industrializada</span> para Guatemala
+      </h1>
+
+      <p class="hero-sub">
+        Transformamos la consultoría tradicional de TI en una línea de
+        ensamblaje de software escalable, ágil y con estándares de
+        seguridad institucional.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary js-open-schedule">Agendar Diagnóstico Express</a>
+        <a href="#servicios" class="btn-secondary js-tab-link" data-panel="servicios">Conocer soluciones</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">7 días</span>
+          <span class="stat-label">a prototipo funcional</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">48–72h</span>
+          <span class="stat-label">ciclos de iteración y feedback</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">1</span>
+          <span class="stat-label">identidad SSO para todos sus sistemas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagrama esquemático: línea de montaje, en clave de plano técnico -->
+    <div class="hero-diagram" aria-hidden="true">
+      <svg viewBox="0 0 480 480">
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#22c3ea"/>
+            <stop offset="100%" stop-color="#1d3fae"/>
+          </linearGradient>
+        </defs>
+
+        <rect class="diagram-frame" x="20" y="20" width="440" height="440" rx="14"/>
+        <!-- tick marks tipo regla de plano -->
+        <g class="diagram-tick">
+          <line x1="20" y1="12" x2="20" y2="20"/>
+          <line x1="460" y1="12" x2="460" y2="20"/>
+          <line x1="12" y1="20" x2="20" y2="20"/>
+          <line x1="12" y1="460" x2="20" y2="460"/>
+        </g>
+
+        <!-- ruta de ensamblaje -->
+        <path class="diagram-path" d="M 70 380 C 140 380, 140 260, 210 260 S 280 140, 350 140 S 400 100, 420 100"/>
+
+        <!-- unidad viajando por la línea de montaje -->
+        <circle class="diagram-runner" r="4.2">
+          <animateMotion dur="4.5s" repeatCount="indefinite"
+            path="M 70 380 C 140 380, 140 260, 210 260 S 280 140, 350 140 S 400 100, 420 100" />
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.9;1" dur="4.5s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- nodo 1: playbook -->
+        <circle class="diagram-node-ring" cx="70" cy="380" r="20"/>
+        <circle class="diagram-node-dot pulse-node d1" cx="70" cy="380" r="3.2"/>
+        <text class="diagram-label" x="70" y="415" text-anchor="middle">PLAYBOOK</text>
+
+        <!-- nodo 2: células -->
+        <circle class="diagram-node-ring" cx="210" cy="260" r="20"/>
+        <circle class="diagram-node-dot pulse-node d2" cx="210" cy="260" r="3.2"/>
+        <text class="diagram-label" x="210" y="295" text-anchor="middle">CÉLULAS</text>
+
+        <!-- nodo 3: SSO core -->
+        <circle class="diagram-node-ring" cx="350" cy="140" r="22"/>
+        <circle class="diagram-node-dot pulse-node d3" cx="350" cy="140" r="3.4"/>
+        <text class="diagram-label" x="350" y="115" text-anchor="middle">SSO-CORE</text>
+
+        <!-- nodo 4: producción -->
+        <circle class="diagram-node-ring" cx="420" cy="100" r="14"/>
+        <text class="diagram-label" x="420" y="80" text-anchor="middle">PROD</text>
+
+        <!-- micro grid de puntos, eco del logo -->
+        <g>
+          <rect x="382" y="352" width="6" height="6" fill="#1d3fae" opacity="0.55"/>
+          <rect x="396" y="352" width="10" height="10" fill="#22c3ea" opacity="0.7"/>
+          <rect x="382" y="368" width="14" height="14" fill="#22c3ea" opacity="0.45"/>
+          <rect x="404" y="372" width="6" height="6" fill="#1d3fae" opacity="0.6"/>
+        </g>
+
+        <text class="diagram-label" x="440" y="440" text-anchor="end" style="opacity:.55">REV. 4.2 — KATSA/ITC</text>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROBLEMA ── -->
+<section id="problema">
+  <div class="section-header">
+    <p class="eyebrow">El Riesgo Crítico</p>
+    <h2>Las inversiones tecnológicas fallan<br />por estas brechas</h2>
+    <p class="section-desc">Identificamos los tres puntos de quiebre más comunes en proyectos de TI en el mercado guatemalteco.</p>
+  </div>
+  <div class="problems-grid">
+    <div class="problem-card blueprint">
+      <div class="icon-chip tone-alert">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 5 12h5l-1 9 8-11h-5l1-7Z"/></svg>
+      </div>
+      <h3>Desconexión negocio–técnica</h3>
+      <p>Brecha profunda entre lo que la institución requiere y lo que el equipo técnico construye, generando retrabajo y presupuestos perdidos.</p>
+    </div>
+    <div class="problem-card blueprint">
+      <div class="icon-chip tone-alert">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.2 2"/></svg>
+      </div>
+      <h3>Tiempos que superan la vigencia</h3>
+      <p>Ciclos de desarrollo tan extensos que cuando el producto se entrega, la necesidad operativa ya cambió o el presupuesto se agotó.</p>
+    </div>
+    <div class="problem-card blueprint">
+      <div class="icon-chip tone-alert">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="1.6"/><path d="M8 11V7.5A4 4 0 0 1 15.3 5"/></svg>
+      </div>
+      <h3>Sistemas fragmentados e inseguros</h3>
+      <p>Ecosistemas aislados sin arquitectura centralizada de identidad generan vulnerabilidades y costos de integración exponenciales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPLORAR (sistema de pestañas) ── -->
+<section id="explorar" class="tabs-wrapper">
+  <div class="section-header">
+    <p class="eyebrow">Explore KATSA</p>
+    <h2>Un ecosistema modular,<br />a su propio ritmo</h2>
+    <p class="section-desc">Cinco componentes de una misma línea de montaje. Elija uno y profundice sin perder el hilo del resto.</p>
+  </div>
+
+  <div class="tabs-nav" role="tablist" aria-label="Secciones de la solución">
+    <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="solucion" data-panel="solucion">
+      <span class="tab-btn-index">01</span>Solución
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="servicios" data-panel="servicios">
+      <span class="tab-btn-index">02</span>Servicios
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="sectores" data-panel="sectores">
+      <span class="tab-btn-index">03</span>Sectores
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tecnologia" data-panel="tecnologia">
+      <span class="tab-btn-index">04</span>Tecnología
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="metodologia" data-panel="metodologia">
+      <span class="tab-btn-index">05</span>Metodología
+    </button>
+  </div>
+
+  <div class="build-bar" id="buildBar" aria-hidden="true"><span></span></div>
+
+  <div class="tabs-panels">
+
+  <!-- ── SOLUCIÓN ── -->
+  <div id="solucion" class="tab-panel is-active" role="tabpanel" aria-labelledby="solucion" tabindex="0">
+  <div class="section-header">
+    <p class="eyebrow">Nuestra Solución</p>
+    <h2>Cambiamos la artesanía<br />por una línea de montaje industrial</h2>
+    <p class="section-desc">Cuatro pilares operativos en secuencia que garantizan velocidad, calidad y escalabilidad en cada entrega.</p>
+  </div>
+  <div class="assembly-container">
+    <div class="assembly-track">
+      <div class="pillar-card blueprint stagger-card">
+        <div class="pillar-num">Pilar 01</div>
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></svg>
+        </div>
+        <h3>Playbook de Prototipado</h3>
+        <p>Biblioteca propia de componentes visuales y guía de estilo funcional que estandariza la experiencia de usuario en todos los proyectos.</p>
+      </div>
+      <div class="pillar-card blueprint stagger-card">
+        <div class="pillar-num">Pilar 02</div>
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.55 1.55M7.15 16.85 5.6 18.4M18.4 18.4l-1.55-1.55M7.15 7.15 5.6 5.6"/></svg>
+        </div>
+        <h3>Células de Producción</h3>
+        <p>Equipos multidisciplinarios (Analista de Procesos + Especialista en Prototipado) ejecutando tareas específicas dentro de la línea de montaje.</p>
+      </div>
+      <div class="pillar-card blueprint stagger-card">
+        <div class="pillar-num">Pilar 03</div>
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.3-6M20 12a8 8 0 0 1-13.3 6"/><path d="M17.3 3.5v3.5H14M6.7 20.5V17H10"/></svg>
+        </div>
+        <h3>Línea de Montaje</h3>
+        <p>Proceso rítmico desde la ingesta de requerimientos hasta la entrega de prototipos funcionales en ciclos cortos de 7 a 10 días.</p>
+      </div>
+      <div class="pillar-card blueprint stagger-card">
+        <div class="pillar-num">Pilar 04</div>
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M10 8h4M10 12h4M10 16h1.5"/></svg>
+        </div>
+        <h3>Automatización Interna</h3>
+        <p>Generación automática de documentación técnica y gestión de proyectos, maximizando el tiempo de creación de valor real.</p>
+      </div>
+    </div>
+  </div>
+  </div><!-- /#solucion -->
+
+  <!-- ── SERVICIOS ── -->
+  <div id="servicios" class="tab-panel" role="tabpanel" aria-labelledby="servicios" tabindex="0" hidden>
+  <div class="section-header">
+    <p class="eyebrow">Catálogo MVP</p>
+    <h2>Servicios modulares<br />listos para desplegar</h2>
+    <p class="section-desc">Cuatro ofertas de alto impacto, diseñadas para generar valor medible desde la primera semana de colaboración.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card blueprint stagger-card">
+      <div class="icon-chip">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg>
+      </div>
+      <h3>Diagnóstico Express</h3>
+      <p>Prototipo interactivo y clicable en una semana para validación de stakeholders, antes de comprometer presupuestos significativos.</p>
+      <span class="service-tag">7 días</span>
+    </div>
+    <div class="service-card blueprint stagger-card">
+      <div class="icon-chip">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h11l-2.5-2.5M4 7l2.5 2.5"/><path d="M20 17H9l2.5 2.5M20 17l-2.5-2.5"/></svg>
+      </div>
+      <h3>Automatización de Flujos</h3>
+      <p>Digitalización de procesos críticos de aprobación y captura de datos. Web y Móvil con capacidad Offline-first para entornos de conectividad limitada.</p>
+      <span class="service-tag">Web &amp; Móvil</span>
+    </div>
+    <div class="service-card blueprint stagger-card">
+      <div class="icon-chip">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="1.6"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg>
+      </div>
+      <h3>SSO-as-a-Service</h3>
+      <p>Infraestructura de identidad centralizada mediante Keycloak u OpenIddict. Un único punto de autenticación para todos sus sistemas y aplicaciones.</p>
+      <span class="service-tag">Seguridad</span>
+    </div>
+    <div class="service-card blueprint stagger-card">
+      <div class="icon-chip">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-5 8 5v10"/><path d="M4 20h16M9 20v-6h6v6"/></svg>
+      </div>
+      <h3>Células de Desarrollo Continuo</h3>
+      <p>El brazo de innovación externo de su organización. Equipos dedicados para evolución tecnológica continua, sin la carga de nómina fija de IT.</p>
+      <span class="service-tag">Suscripción</span>
+    </div>
+  </div>
+  </div><!-- /#servicios -->
+
+  <!-- ── SECTORES ── -->
+  <div id="sectores" class="tab-panel" role="tabpanel" aria-labelledby="sectores" tabindex="0" hidden>
+  <div class="section-header">
+    <p class="eyebrow">Adaptabilidad Estratégica</p>
+    <h2>Soluciones B2G y B2B</h2>
+    <p class="section-desc">Dos modelos diferenciados para atender con precisión las necesidades del sector gobierno y del sector privado.</p>
+  </div>
+  <div class="sectores-grid">
+    <div class="sector-card gobierno blueprint stagger-card">
+      <div class="sector-label">Sector Gobierno · B2G</div>
+      <h3>Modernización institucional y transparencia</h3>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Enfoque</strong><span>Transparencia, auditabilidad y solidez institucional en cada entregable.</span></div></div>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Entregables</strong><span>Formulación técnica de TDRs y proyectos cerrados que superan auditorías.</span></div></div>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Garantía</strong><span>Trazabilidad completa e independencia de sistemas legados.</span></div></div>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Impacto</strong><span>Reducción de riesgos de auditoría y certeza en la ejecución presupuestaria.</span></div></div>
+    </div>
+    <div class="sector-card privado blueprint stagger-card">
+      <div class="sector-label">Sector Privado · B2B</div>
+      <h3>Eficiencia operativa y retorno de inversión</h3>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Enfoque</strong><span>ROI medible, velocidad de entrega y eficiencia operativa continua.</span></div></div>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Modelo</strong><span>Suscripción mensual que actúa como brazo de innovación tecnológica externa.</span></div></div>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Garantía</strong><span>Iteraciones y feedback continuo cada 48 a 72 horas.</span></div></div>
+      <div class="sector-item"><div class="sector-dot"></div><div><strong>Impacto</strong><span>Automatización constante de procesos críticos sin carga de IT interno.</span></div></div>
+    </div>
+  </div>
+  </div><!-- /#sectores -->
+
+  <!-- ── TECNOLOGÍA ── -->
+  <div id="tecnologia" class="tab-panel" role="tabpanel" aria-labelledby="tecnologia" tabindex="0" hidden>
+  <div class="tech-wrapper">
+    <div class="tech-content stagger-card">
+      <p class="eyebrow">Diferenciador Técnico</p>
+      <h2>Seguridad e identidad<br />de nivel institucional</h2>
+      <p>Dominio especializado en <strong>Keycloak</strong> y <strong>OpenIddict</strong> para orquestar arquitecturas de autenticación y autorización unificadas. Integramos ecosistemas fragmentados bajo un único punto de control.</p>
+      <div class="tech-features">
+        <div class="tech-feature stagger-card">
+          <div class="tech-feature-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6c0 5 3.2 8.3 7.5 9 4.3-.7 7.5-4 7.5-9V6L12 3Z"/></svg></div>
+          <div class="tech-feature-text"><strong>Single Sign-On Centralizado</strong><span>Un usuario, una identidad para todos los sistemas de su organización.</span></div>
+        </div>
+        <div class="tech-feature stagger-card">
+          <div class="tech-feature-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h10v17H7z"/><path d="M9.5 3.5V2h5v1.5M9 9l2 2 4-4"/></svg></div>
+          <div class="tech-feature-text"><strong>Cumplimiento normativo</strong><span>Arquitecturas que cumplen con normas de ciberseguridad del sector público guatemalteco.</span></div>
+        </div>
+        <div class="tech-feature stagger-card">
+          <div class="tech-feature-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7 4 12l5 5M15 7l5 5-5 5"/></svg></div>
+          <div class="tech-feature-text"><strong>Integración de sistemas legados</strong><span>Conectamos sus aplicaciones existentes sin migración completa.</span></div>
+        </div>
+        <div class="tech-feature stagger-card">
+          <div class="tech-feature-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="12" width="3" height="8"/><rect x="12.5" y="8" width="3" height="12"/><rect x="18" y="15" width="3" height="5"/></svg></div>
+          <div class="tech-feature-text"><strong>Auditoría y trazabilidad</strong><span>Registro completo de accesos para reportes institucionales y de cumplimiento.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sso-diagram stagger-card">
+      <div class="sso-center">SSO<br />Core</div>
+      <div class="sso-nodes">
+        <div class="sso-node"><div class="sso-node-dot"></div>Portal Web</div>
+        <div class="sso-node"><div class="sso-node-dot"></div>App Móvil</div>
+        <div class="sso-node" style="--dot-color:var(--bronze)"><div class="sso-node-dot" style="background:var(--bronze)"></div>Sistema ERP</div>
+        <div class="sso-node"><div class="sso-node-dot"></div>API Interna</div>
+        <div class="sso-node"><div class="sso-node-dot" style="background:var(--bronze)"></div>Gov Services</div>
+        <div class="sso-node"><div class="sso-node-dot"></div>Reportería</div>
+      </div>
+    </div>
+  </div>
+  </div><!-- /#tecnologia -->
+
+  <!-- ── METODOLOGÍA (roadmap) ── -->
+  <div id="metodologia" class="tab-panel" role="tabpanel" aria-labelledby="metodologia" tabindex="0" hidden>
+  <div class="section-header">
+    <p class="eyebrow">Metodología de Acompañamiento</p>
+    <h2>De la visión al despliegue<br />en tres fases auditables</h2>
+    <p class="section-desc">Cada fase entrega artefactos concretos y verificables. Su organización siempre sabe en qué punto estamos.</p>
+  </div>
+  <div class="roadmap-track">
+    <div class="phase-card blueprint stagger-card">
+      <div class="phase-num">1</div>
+      <h3>Cimentación</h3>
+      <ul>
+        <li>Definición de arquitectura base</li>
+        <li>Playbook v1.0</li>
+        <li>Prototipo funcional inicial</li>
+        <li>Configuración SSO Core</li>
+      </ul>
+    </div>
+    <div class="phase-card blueprint stagger-card">
+      <div class="phase-num">2</div>
+      <h3>Ejecución Ágil</h3>
+      <ul>
+        <li>Sprints de 2 semanas</li>
+        <li>Entregables funcionales auditables</li>
+        <li>Iteraciones cada 48–72 horas</li>
+        <li>Validación con stakeholders</li>
+      </ul>
+    </div>
+    <div class="phase-card blueprint stagger-card">
+      <div class="phase-num">3</div>
+      <h3>Estabilización y Despliegue</h3>
+      <ul>
+        <li>Pruebas QA certificadas</li>
+        <li>Documentación técnica de TDRs</li>
+        <li>Pase a producción supervisado</li>
+        <li>Transferencia de conocimiento</li>
+      </ul>
+    </div>
+  </div>
+  </div><!-- /#metodologia -->
+
+  </div><!-- /.tabs-panels -->
+</section><!-- /#explorar -->
+
+<!-- ── CTA ── -->
+<section id="contacto">
+  <div class="cta-box blueprint">
+    <div class="cta-logo-wrap">
+      <img class="cta-logo" src="Logo.png" alt="KATSA" />
+      <svg class="cta-pixels" viewBox="0 0 60 60" aria-hidden="true">
+        <rect x="4" y="18" width="8" height="8" fill="#22c3ea" opacity="0.85"/>
+        <rect x="16" y="10" width="6" height="6" fill="#1d3fae" opacity="0.6"/>
+        <rect x="10" y="30" width="11" height="11" fill="#22c3ea" opacity="0.5"/>
+        <rect x="24" y="34" width="5" height="5" fill="#1d3fae" opacity="0.7"/>
+      </svg>
+    </div>
+    <p class="eyebrow" style="margin-bottom:14px;">¿Listo para comenzar?</p>
+    <h2>Inicie la transformación digital<br />de su organización</h2>
+    <p>Agende una sesión de Diagnóstico Express con nuestro equipo de ingeniería. En 7 días tendrá un prototipo funcional para validar con sus tomadores de decisión.</p>
+    <div class="cta-actions">
+      <a href="#contacto" class="btn-primary js-open-schedule">Agendar Diagnóstico Express</a>
+      <a href="#contacto" class="btn-secondary js-open-schedule">Solicitar servicio</a>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="m4 6.5 8 6.5 8-6.5"/></svg></div>
+        <a href="mailto:contacto@kingdomagiletech.com">contacto@kingdomagiletech.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5s-1.2 6.2-3.4 8.5c-2.2-2.3-3.4-5.3-3.4-8.5S9.8 5.8 12 3.5Z"/></svg></div>
+        <a href="https://www.kingdomagiletech.com" target="_blank">www.kingdomagiletech.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div>
+        <span>Sacatepéquez, Guatemala</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICE SCHEDULING MODAL ── -->
+<div class="schedule-modal" id="scheduleModal" aria-hidden="true">
+  <div class="schedule-dialog" role="dialog" aria-modal="true" aria-labelledby="scheduleTitle">
+    <button type="button" class="schedule-close" id="scheduleClose" aria-label="Cerrar formulario">&times;</button>
+
+    <div class="schedule-kicker">Agendamiento de servicio</div>
+    <h2 id="scheduleTitle">Programe una sesión con KATSA</h2>
+    <p class="schedule-subtitle">Complete sus datos, seleccione el servicio que necesita y el día y hora de su preferencia.</p>
+
+    <form id="scheduleForm">
+      <div class="schedule-grid">
+        <div class="schedule-field full">
+          <label for="scheduleName">Nombre completo</label>
+          <input type="text" id="scheduleName" name="name" placeholder="Ej. Juan Pérez" autocomplete="name" required>
+        </div>
+
+        <div class="schedule-field">
+          <label for="scheduleEmail">Correo electrónico</label>
+          <input type="email" id="scheduleEmail" name="email" placeholder="nombre@empresa.com" autocomplete="email" required>
+        </div>
+
+        <div class="schedule-field">
+          <label for="schedulePhone">Número de teléfono</label>
+          <input type="tel" id="schedulePhone" name="phone" placeholder="+502 0000-0000" autocomplete="tel" required>
+        </div>
+
+        <div class="schedule-field full">
+          <label for="scheduleService">Servicio requerido</label>
+          <select id="scheduleService" name="service" required>
+            <option value="" selected disabled>Seleccione un servicio</option>
+            <option value="Diagnóstico Express">Diagnóstico Express</option>
+            <option value="Automatización de Flujos">Automatización de Flujos</option>
+            <option value="SSO-as-a-Service">SSO-as-a-Service</option>
+            <option value="Células de Desarrollo Continuo">Células de Desarrollo Continuo</option>
+          </select>
+        </div>
+
+        <div class="schedule-field">
+          <label for="scheduleDate">Fecha del servicio</label>
+          <input type="date" id="scheduleDate" name="date" required>
+        </div>
+
+        <div class="schedule-field">
+          <label for="scheduleTime">Hora preferida</label>
+          <input type="time" id="scheduleTime" name="time" min="08:00" max="18:00" required>
+        </div>
+      </div>
+
+      <div class="schedule-note">Horario de referencia: lunes a viernes, de 8:00 a. m. a 6:00 p. m. La solicitud queda sujeta a confirmación del equipo.</div>
+
+      <div class="schedule-actions">
+        <button type="button" class="schedule-cancel" id="scheduleCancel">Cancelar</button>
+        <button type="submit" class="schedule-submit">Solicitar agendamiento</button>
+      </div>
+
+      <div class="schedule-success" id="scheduleSuccess" role="status"></div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">
+    <img class="footer-logo" src="Logo.png" alt="KATSA" />
+    <div class="footer-text">
+      <span class="footer-name">KAT<span>SA</span></span>
+      <span class="footer-sub">Soluciones Tecnológicas Ágiles</span>
+    </div>
+  </div>
+  <div class="footer-center">
+    <nav class="footer-nav">
+      <a href="#solucion" class="js-tab-link" data-panel="solucion">Solución</a>
+      <a href="#servicios" class="js-tab-link" data-panel="servicios">Servicios</a>
+      <a href="#sectores" class="js-tab-link" data-panel="sectores">Sectores</a>
+      <a href="#tecnologia" class="js-tab-link" data-panel="tecnologia">Tecnología</a>
+      <a href="#metodologia" class="js-tab-link" data-panel="metodologia">Metodología</a>
+    </nav>
+  </div>
+  <div class="footer-right">
+    <a href="mailto:contacto@kingdomagiletech.com">contacto@kingdomagiletech.com</a>
+    <a href="https://www.kingdomagiletech.com" target="_blank">www.kingdomagiletech.com</a>
+    <p>Guatemala · Región Centroamericana</p>
+    <p>&copy; 2026 Kingdom Agile Tech. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const modal = document.getElementById('scheduleModal');
+  const form = document.getElementById('scheduleForm');
+  const closeBtn = document.getElementById('scheduleClose');
+  const cancelBtn = document.getElementById('scheduleCancel');
+  const success = document.getElementById('scheduleSuccess');
+  const dateInput = document.getElementById('scheduleDate');
+  const openButtons = document.querySelectorAll('.js-open-schedule');
+
+  if (!modal || !form) return;
+
+  function todayISO() {
+    const now = new Date();
+    const offset = now.getTimezoneOffset();
+    return new Date(now.getTime() - offset * 60000).toISOString().slice(0, 10);
+  }
+
+  dateInput.min = todayISO();
+
+  function openModal() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    success.style.display = 'none';
+    success.innerHTML = '';
+    setTimeout(() => document.getElementById('scheduleName').focus(), 50);
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  openButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      openModal();
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    const data = new FormData(form);
+    const name = data.get('name');
+    const service = data.get('service');
+    const date = new Date(data.get('date') + 'T00:00:00');
+    const formattedDate = date.toLocaleDateString('es-GT', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    success.innerHTML = '<strong>Solicitud recibida.</strong><br>' +
+      'Gracias, ' + name + '. Registramos su solicitud para <strong>' + service +
+      '</strong> el <strong>' + formattedDate + '</strong> a las <strong>' +
+      data.get('time') + '</strong>. El equipo deberá confirmar la disponibilidad.';
+    success.style.display = 'block';
+    form.reset();
+    dateInput.min = todayISO();
+  });
+})();
+</script>
+
+<!-- ── SISTEMA DE PESTAÑAS ── -->
+<script>
+(function () {
+  const panels   = document.querySelectorAll('.tab-panel');
+  const tabBtns  = document.querySelectorAll('.tabs-nav .tab-btn');
+  const tabLinks = document.querySelectorAll('.js-tab-link');
+  const explorar = document.getElementById('explorar');
+  const burger   = document.getElementById('navBurger');
+  const navList  = document.getElementById('navList');
+  const buildBar = document.getElementById('buildBar');
+
+  const validPanels = new Set(Array.from(panels).map(p => p.id));
+  let firstRun = true;
+
+  function activate(panelId, opts) {
+    opts = opts || {};
+    if (!validPanels.has(panelId)) return;
+
+    panels.forEach(panel => {
+      const isTarget = panel.id === panelId;
+      panel.hidden = !isTarget;
+      panel.classList.toggle('is-active', isTarget);
+    });
+
+    tabBtns.forEach(btn => {
+      const isTarget = btn.dataset.panel === panelId;
+      btn.classList.toggle('is-active', isTarget);
+      btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+    });
+
+    tabLinks.forEach(link => link.classList.toggle('is-active', link.dataset.panel === panelId));
+
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + panelId);
+    }
+
+    if (buildBar && !firstRun) {
+      buildBar.classList.remove('is-running');
+      void buildBar.offsetWidth; // reflow para reiniciar la animación
+      buildBar.classList.add('is-running');
+      setTimeout(() => buildBar.classList.remove('is-running'), 600);
+    }
+    firstRun = false;
+
+    if (opts.scroll !== false && explorar) {
+      const navH = 90;
+      const top = explorar.getBoundingClientRect().top + window.pageYOffset - navH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    if (navList && navList.classList.contains('is-open')) closeMenu();
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => activate(btn.dataset.panel, { scroll: false }));
+  });
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      activate(link.dataset.panel);
+    });
+  });
+
+  // deep-link inicial (ej. sitio.com/#servicios)
+  const initial = (location.hash || '').replace('#', '');
+  if (validPanels.has(initial)) activate(initial, { scroll: false });
+
+  // ── menú móvil ──
+  function openMenu() {
+    navList.classList.add('is-open');
+    burger.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    navList.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+  if (burger && navList) {
+    burger.addEventListener('click', () => {
+      navList.classList.contains('is-open') ? closeMenu() : openMenu();
+    });
+    navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      if (!a.classList.contains('js-tab-link')) closeMenu();
+    }));
+  }
+})();
+</script>
+
+<!-- ── SPOTLIGHT DE CURSOR SOBRE LA GRILLA ── -->
+<script>
+(function () {
+  const spot = document.getElementById('gridSpotlight');
+  if (!spot) return;
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!canHover) return;
+
+  let hideT;
+  window.addEventListener('mousemove', (e) => {
+    spot.style.setProperty('--sx', e.clientX + 'px');
+    spot.style.setProperty('--sy', e.clientY + 'px');
+    spot.classList.add('is-active');
+    clearTimeout(hideT);
+    hideT = setTimeout(() => spot.classList.remove('is-active'), 2200);
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => spot.classList.remove('is-active'));
+})();
+</script>
+
+<!-- ── FONDO ANIMADO: circuito / línea de montaje ── -->
+<script>
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canParallax = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  let W, H, DPR;
+  let nodes = [];
+  let squares = [];
+  let packets = [];
+  let running = true;
+  let rafId = null;
+
+  let targetPX = 0, targetPY = 0, curPX = 0, curPY = 0;
+
+  const CYAN_LIGHT = [34, 195, 234];
+  const CYAN       = [29, 63, 174];
+  const SILVER     = [92, 106, 138];
+  const BRONZE     = [147, 96, 44];
+
+  function rgba(rgb, a) { return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + a + ')'; }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function nodeCount() {
+    const area = window.innerWidth * window.innerHeight;
+    return Math.max(26, Math.min(70, Math.round(area / 26000)));
+  }
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  function initNodes() {
+    const n = nodeCount();
+    nodes = [];
+    for (let i = 0; i < n; i++) {
+      const isHub = i % 9 === 0;
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.14,
+        vy: (Math.random() - 0.5) * 0.14,
+        r: isHub ? (2.4 + Math.random() * 1.2) : (1.1 + Math.random() * 1.1),
+        hub: isHub,
+        pulse: Math.random() * Math.PI * 2,
+        color: isHub ? (Math.random() < 0.75 ? CYAN_LIGHT : BRONZE) : SILVER
+      });
+    }
+  }
+
+  function initSquares() {
+    const n = Math.max(5, Math.min(11, Math.round(window.innerWidth / 220)));
+    squares = [];
+    for (let i = 0; i < n; i++) {
+      squares.push({
+        x: Math.random() * W,
+        y: H + Math.random() * H,
+        size: 3 + Math.random() * 6,
+        speed: 0.06 + Math.random() * 0.1,
+        drift: (Math.random() - 0.5) * 0.06,
+        opacity: 0.1 + Math.random() * 0.16,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.003
+      });
+    }
+  }
+
+  // degradado cian → azul, igual al de la cinta del logo
+  function squareGradient(size) {
+    const h = size / 2;
+    const g = ctx.createLinearGradient(-h, -h, h, h);
+    g.addColorStop(0, rgba(CYAN_LIGHT, 1));
+    g.addColorStop(1, rgba(CYAN, 1));
+    return g;
+  }
+
+  const MAX_DIST = 150;
+  const MAX_PACKETS = 5;
+
+  function tryStartPacket() {
+    if (packets.length >= MAX_PACKETS || Math.random() > 0.035 || nodes.length < 2) return;
+    const a = nodes[Math.floor(Math.random() * nodes.length)];
+    const b = nodes[Math.floor(Math.random() * nodes.length)];
+    if (a === b) return;
+    const dx = a.x - b.x, dy = a.y - b.y;
+    if (Math.sqrt(dx * dx + dy * dy) > MAX_DIST) return;
+    packets.push({ a, b, t: 0, speed: 0.008 + Math.random() * 0.01 });
+  }
+
+  function step() {
+    if (!running) return;
+
+    if (canParallax) {
+      curPX = lerp(curPX, targetPX, 0.04);
+      curPY = lerp(curPY, targetPY, 0.04);
+      canvas.style.transform = 'translate3d(' + curPX.toFixed(1) + 'px,' + curPY.toFixed(1) + 'px,0)';
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    // conexiones entre nodos cercanos (malla de circuito)
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.14;
+          ctx.strokeStyle = rgba(CYAN, alpha);
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // nodos
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < -20) n.x = W + 20; else if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20; else if (n.y > H + 20) n.y = -20;
+
+      let r = n.r;
+      let alpha = n.hub ? 0.5 : 0.28;
+      if (n.hub) {
+        n.pulse += 0.018;
+        const p = (Math.sin(n.pulse) + 1) / 2;
+        r = n.r + p * 1.6;
+        alpha = 0.32 + p * 0.4;
+      }
+      ctx.fillStyle = rgba(n.color, alpha);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // paquetes de datos viajando entre nodos (flujo de identidad / SSO)
+    tryStartPacket();
+    for (let i = packets.length - 1; i >= 0; i--) {
+      const p = packets[i];
+      p.t += p.speed;
+      if (p.t >= 1) { packets.splice(i, 1); continue; }
+      const x = lerp(p.a.x, p.b.x, p.t);
+      const y = lerp(p.a.y, p.b.y, p.t);
+      const fade = Math.sin(p.t * Math.PI);
+      ctx.save();
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = rgba(CYAN_LIGHT, 0.9);
+      ctx.fillStyle = rgba(CYAN_LIGHT, 0.85 * fade);
+      ctx.beginPath();
+      ctx.arc(x, y, 2.1, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // pixeles a la deriva — mosaico degradado cian/azul, como el logo
+    for (let i = 0; i < squares.length; i++) {
+      const s = squares[i];
+      s.y -= s.speed;
+      s.x += s.drift;
+      s.rot += s.rotSpeed;
+      if (s.y < -20) { s.y = H + 20; s.x = Math.random() * W; }
+      ctx.save();
+      ctx.translate(s.x, s.y);
+      ctx.rotate(s.rot);
+      ctx.globalAlpha = s.opacity;
+      ctx.fillStyle = squareGradient(s.size);
+      ctx.fillRect(-s.size / 2, -s.size / 2, s.size, s.size);
+      ctx.restore();
+    }
+
+    rafId = requestAnimationFrame(step);
+  }
+
+  function drawStatic() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      ctx.fillStyle = rgba(n.color, n.hub ? 0.4 : 0.22);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function start() {
+    resize();
+    initNodes();
+    initSquares();
+    packets = [];
+    if (reduceMotion) {
+      drawStatic();
+    } else {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(step);
+    }
+  }
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(start, 200);
+  });
+
+  if (canParallax) {
+    window.addEventListener('mousemove', (e) => {
+      targetPX = (e.clientX / window.innerWidth - 0.5) * 14;
+      targetPY = (e.clientY / window.innerHeight - 0.5) * 14;
+    }, { passive: true });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    running = !document.hidden && !reduceMotion;
+    if (running) rafId = requestAnimationFrame(step);
+    else cancelAnimationFrame(rafId);
+  });
+
+  start();
+})();
+</script>
+
+</body>
+</html>
